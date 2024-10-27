@@ -13,18 +13,23 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
             color: #333;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('image/bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
         }
         header {
-            background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-image: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
             color: #fff;
             text-align: center;
             padding: 2rem 0;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         nav {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 1rem;
             position: sticky;
             top: 0;
@@ -46,11 +51,11 @@
             color: #fff;
         }
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 40px auto;
             padding: 30px;
-            background-color: #fff;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             border-radius: 12px;
         }
         h1 {
@@ -60,79 +65,54 @@
             font-size: 2.5rem;
             font-weight: 600;
         }
-        .tab-container {
-            margin-top: 20px;
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            justify-content: center;
         }
-        .tab {
-            background-color: #edf2f7;
-            color: #4a5568;
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 1rem;
-            transition: 0.4s;
+        @media (max-width: 1024px) {
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .project-category {
+            background-color: #f8f9fa;
             border-radius: 8px;
-            margin-bottom: 10px;
-            font-weight: 600;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
         }
-        .tab:hover {
-            background-color: #e2e8f0;
-        }
-        .tab:after {
-            content: '\002B';
+        .project-category h2 {
             color: #4a5568;
-            font-weight: bold;
-            float: right;
-            margin-left: 5px;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
         }
-        .tab.active {
-            background-color: #667eea;
-            color: #fff;
+        .project-category ul {
+            list-style-type: none;
+            padding: 0;
         }
-        .tab.active:after {
-            content: "\2212";
-            color: #fff;
+        .project-category li {
+            margin-bottom: 10px;
         }
-        .tab-content {
-            padding: 0 18px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-            background-color: #fff;
-            border-radius: 0 0 8px 8px;
-        }
-        ol {
-            padding-left: 20px;
-            margin: 15px 0;
-        }
-        ol li {
-            padding: 10px 0;
-            margin: 5px 0;
-            color: #4a5568;
-            transition: all 0.3s ease;
-        }
-        ol li:hover {
-            color: #2d3748;
-            transform: translateX(5px);
-        }
-        ol li a {
+        .project-category a {
             color: #4a5568;
             text-decoration: none;
-            display: block;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
         }
-        ol li a:hover {
-            color: #2d3748;
-            transform: translateX(5px);
+        .project-category a:hover {
+            color: #667eea;
         }
         footer {
-            background-color: #2d3748;
+            background-color: rgba(45, 55, 72, 0.9);
             color: #e2e8f0;
             text-align: center;
             padding: 1.5rem 0;
@@ -157,91 +137,71 @@
     </nav>
     <div class="container">
         <h1>Project Checklist</h1>
-        <div class="tab-container">
-            <button class="tab active">Hobby</button>
-            <div class="tab-content active">
-                <ol>
+        <div class="project-grid">
+            <div class="project-category">
+                <h2>Hobby</h2>
+                <ul>
                     <li><a href="https://projects.johnsonmarketer.com">Online Dictionary</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Start a vegetable garden</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Take up photography</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Join a local book club</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Try out pottery classes</a></li>
-                </ol>
+                </ul>
             </div>
-
-            <button class="tab">Game</button>
-            <div class="tab-content">
-                <ol>
+            <div class="project-category">
+                <h2>Game</h2>
+                <ul>
                     <li><a href="https://projects.johnsonmarketer.com">Brave Dino</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Tic Tac Toe</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Connect Four</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Organize a local gaming tournament</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Learn to speedrun a classic game</a></li>
-                </ol>
+                </ul>
             </div>
-
-            <button class="tab">Work</button>
-            <div class="tab-content">
-                <ol>
+            <div class="project-category">
+                <h2>Work</h2>
+                <ul>
                     <li><a href="https://projects.johnsonmarketer.com">Image Compressor</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Calculator</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Unit Converter</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Optimize the sales funnel</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Create a 5-year business expansion plan</a></li>
-                </ol>
+                </ul>
             </div>
-
-            <button class="tab">Life</button>
-            <div class="tab-content">
-                <ol>
+            <div class="project-category">
+                <h2>Life</h2>
+                <ul>
                     <li><a href="https://projects.johnsonmarketer.com">Meditation Timer</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Start a daily meditation practice</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Learn a new language</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Plan a solo travel adventure</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Volunteer at a local charity</a></li>
-                </ol>
+                </ul>
             </div>
-
-            <button class="tab">Finance</button>
-            <div class="tab-content">
-                <ol>
+            <div class="project-category">
+                <h2>Finance</h2>
+                <ul>
                     <li><a href="https://projects.johnsonmarketer.com">Create a monthly budget</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Set up an emergency fund</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Research and start investing in index funds</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Pay off credit card debt</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Meet with a financial advisor</a></li>
-                </ol>
+                </ul>
             </div>
-
-            <button class="tab">Machine Learning</button>
-            <div class="tab-content">
-                <ol>
+            <div class="project-category">
+                <h2>Machine Learning</h2>
+                <ul>
                     <li><a href="https://projects.johnsonmarketer.com">Complete an online machine learning course</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Implement a neural network from scratch</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Participate in a Kaggle competition</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Build a recommendation system</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Explore natural language processing techniques</a></li>
-                </ol>
+                </ul>
             </div>
         </div>
     </div>
     <footer>
         <p>&copy; 2024 Software Engineering Services. All rights reserved.</p>
     </footer>
-
-    <script>
-        var tabs = document.getElementsByClassName("tab");
-        for (var i = 0; i < tabs.length; i++) {
-            tabs[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var content = this.nextElementSibling;
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
-            });
-        }
-    </script>
 </body>
 </html>
