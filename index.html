@@ -7,96 +7,145 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="blog.css">
     <link rel="icon" href="image/rocket.svg" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f2f5;
+            background-color: #f8f9fa;
+            color: #333;
         }
         header {
-            background-image: url('https://cdn.shopify.com/s/files/1/0596/6272/9325/files/100.png?v=1728771960');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #fff;
             text-align: center;
-            padding: 1rem 0;
-        }
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         nav {
-            background-color: #444;
-            color: #fff;
+            background-color: #fff;
             padding: 1rem;
-            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         nav a {
-            color: #fff;
+            color: #4a5568;
             margin: 0 1rem;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
+            font-weight: 600;
+            font-size: 0.9rem;
             padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
+            border-radius: 20px;
+            transition: all 0.3s ease;
         }
         nav a:hover {
-            background-color: rgba(255, 255, 255, 0.8);
-            color: #000;
+            background-color: #667eea;
+            color: #fff;
         }
         .container {
             max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
+            margin: 40px auto;
+            padding: 30px;
             background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
         }
         h1 {
             text-align: center;
-            color: #333;
-            margin-bottom: 20px;
+            color: #2d3748;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-weight: 600;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .tab-container {
+            margin-top: 20px;
         }
-        li {
-            background-color: #e0e0e0;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            transition: background-color 0.3s;
-        }
-        li:hover {
-            background-color: #d3d3d3;
-        }
-        input[type="checkbox"] {
-            margin-right: 15px;
-            transform: scale(1.2);
-        }
-        .silver-line {
+        .tab {
+            background-color: #edf2f7;
+            color: #4a5568;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
             border: none;
-            height: 2px;
-            background-color: silver;
-            margin: 0;
+            text-align: left;
+            outline: none;
+            font-size: 1rem;
+            transition: 0.4s;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .tab:hover {
+            background-color: #e2e8f0;
+        }
+        .tab:after {
+            content: '\002B';
+            color: #4a5568;
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+        .tab.active {
+            background-color: #667eea;
+            color: #fff;
+        }
+        .tab.active:after {
+            content: "\2212";
+            color: #fff;
+        }
+        .tab-content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #fff;
+            border-radius: 0 0 8px 8px;
+        }
+        ol {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        ol li {
+            padding: 10px 0;
+            margin: 5px 0;
+            color: #4a5568;
+            transition: all 0.3s ease;
+        }
+        ol li:hover {
+            color: #2d3748;
+            transform: translateX(5px);
+        }
+        ol li a {
+            color: #4a5568;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        ol li a:hover {
+            color: #2d3748;
+            transform: translateX(5px);
+        }
+        footer {
+            background-color: #2d3748;
+            color: #e2e8f0;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
     <header>
         <a href="index.html">
-            <img src="https://cdn.shopify.com/s/files/1/0596/6272/9325/files/000.svg?v=1728706434" alt="Software Engineering Services Logo">
+            <img src="https://cdn.shopify.com/s/files/1/0596/6272/9325/files/000.svg?v=1728706434" alt="Software Engineering Services Logo" style="max-width: 200px;">
         </a>
     </header>
-    <hr class="silver-line">
     <nav>
         <a href="index.html">Home</a>
         <a href="service.html">Services</a>
@@ -108,15 +157,91 @@
     </nav>
     <div class="container">
         <h1>Project Checklist</h1>
-        <ul>
-            <li><input type="checkbox"> Project 1</li>
-            <li><input type="checkbox"> Project 2</li>
-            <li><input type="checkbox"> Project 3</li>
-            <!-- Add more projects as needed -->
-        </ul>
+        <div class="tab-container">
+            <button class="tab active">Hobby</button>
+            <div class="tab-content active">
+                <ol>
+                    <li><a href="https://projects.johnsonmarketer.com">Online Dictionary</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Start a vegetable garden</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Take up photography</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Join a local book club</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Try out pottery classes</a></li>
+                </ol>
+            </div>
+
+            <button class="tab">Game</button>
+            <div class="tab-content">
+                <ol>
+                    <li><a href="https://projects.johnsonmarketer.com">Brave Dino</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Tic Tac Toe</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Connect Four</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Organize a local gaming tournament</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Learn to speedrun a classic game</a></li>
+                </ol>
+            </div>
+
+            <button class="tab">Work</button>
+            <div class="tab-content">
+                <ol>
+                    <li><a href="https://projects.johnsonmarketer.com">Image Compressor</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Calculator</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Unit Converter</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Optimize the sales funnel</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Create a 5-year business expansion plan</a></li>
+                </ol>
+            </div>
+
+            <button class="tab">Life</button>
+            <div class="tab-content">
+                <ol>
+                    <li><a href="https://projects.johnsonmarketer.com">Meditation Timer</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Start a daily meditation practice</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Learn a new language</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Plan a solo travel adventure</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Volunteer at a local charity</a></li>
+                </ol>
+            </div>
+
+            <button class="tab">Finance</button>
+            <div class="tab-content">
+                <ol>
+                    <li><a href="https://projects.johnsonmarketer.com">Create a monthly budget</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Set up an emergency fund</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Research and start investing in index funds</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Pay off credit card debt</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Meet with a financial advisor</a></li>
+                </ol>
+            </div>
+
+            <button class="tab">Machine Learning</button>
+            <div class="tab-content">
+                <ol>
+                    <li><a href="https://projects.johnsonmarketer.com">Complete an online machine learning course</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Implement a neural network from scratch</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Participate in a Kaggle competition</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Build a recommendation system</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Explore natural language processing techniques</a></li>
+                </ol>
+            </div>
+        </div>
     </div>
     <footer>
         <p>&copy; 2024 Software Engineering Services. All rights reserved.</p>
     </footer>
+
+    <script>
+        var tabs = document.getElementsByClassName("tab");
+        for (var i = 0; i < tabs.length; i++) {
+            tabs[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
 </body>
 </html>
