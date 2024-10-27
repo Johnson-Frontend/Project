@@ -2,224 +2,121 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <style>
-        h1, p {
-            color: black;
-            font-weight: bold;
-            font-family: 'Roboto', sans-serif; /* Modern font */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
-        }
-    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Development Showcase</title>
+    <title>Project Checklist</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="blog.css">
+    <link rel="icon" href="image/JSW.png" type="image/png">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient background */
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
+            background-color: #f0f2f5;
         }
         header {
-            background: #333;
+            background-image: url('https://cdn.shopify.com/s/files/1/0596/6272/9325/files/100.png?v=1728771960');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             color: #fff;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #77aaff 3px solid;
-        }
-        header a {
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 16px;
-        }
-        h1 {
-            color: red; /* Add this rule to change the font color to red */
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1>Welcome to My Web Development Showcase</h1>
-            <p>Front End | Back End | API Integration</p>
-        </div>
-    </header>
-</body>
-</html>
-<html lang="en"><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <style>
-        h1, p {
-            color: black;
-            font-weight: bold;
-        }
-    </style>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Development Showcase</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-        header {
-            background: #333;
-            color: #fff;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #77aaff 3px solid;
-        }
-        header a {
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 16px;
-        }
-        h1 {
-            color: red; /* Add this rule to change the font color to red */
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div class="container">
-            <h1>Welcome to My Web Development Showcase</h1>
-            <p>Front End | Back End | API Integration</p>
-        </div>
-    </header>
-</body>
-</html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Development Showcase</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-        header {
-            background: #333;
-            color: #fff;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #77aaff 3px solid;
-        }
-        header a {
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 16px;
-        }
-        header ul {
-            padding: 0;
-            list-style: none;
-        }
-        header li {
-            float: left;
-            display: inline;
-            padding: 0 20px 0 20px;
-        }
-        header #branding {
-            float: left;
-        }
-        header #branding h1 {
-            margin: 0;
-        }
-        header nav {
-            float: right;
-            margin-top: 10px;
-        }
-        .showcase {
-            min-height: 400px;
-            background: url('showcase.jpg') no-repeat 0 -400px;
             text-align: center;
-            color: #fff;
-        }
-        .showcase h1 {
-            margin-top: 100px;
-            font-size: 55px;
-            margin-bottom: 10px;
-        }
-        .showcase p {
-            font-size: 20px;
-        }
-        .content {
-            padding: 20px;
-        }
-        .content h2 {
-            text-align: center;
-        }
-        .content p {
-            text-align: justify;
+            padding: 1rem 0;
         }
         footer {
-            background: #333;
+            background-color: #333;
             color: #fff;
             text-align: center;
-            padding: 10px;
-            margin-top: 20px;
+            padding: 1rem 0;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #000;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #e0e0e0;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        li:hover {
+            background-color: #d3d3d3;
+        }
+        input[type="checkbox"] {
+            margin-right: 15px;
+            transform: scale(1.2);
+        }
+        .silver-line {
+            border: none;
+            height: 2px;
+            background-color: silver;
+            margin: 0;
         }
     </style>
-    <script>
-        setTimeout(function() {
-            window.location.href = "https://www.example.com";
-        }, 10000); // Redirects after 10 seconds
-    </script>
 </head>
 <body>
     <header>
-        <div class="container">
-            <div id="branding">
-                <h1>Web Development Showcase</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+        <a href="index.html">
+            <img src="https://cdn.shopify.com/s/files/1/0596/6272/9325/files/000.svg?v=1728706434" alt="Software Engineering Services Logo">
+        </a>
     </header>
-
-    <section class="showcase">
-        <div class="container">
-            <h1>Welcome to My Web Development Showcase</h1>
-            <p>Front End | Back End | API Integration</p>
-        </div>
-    </section>
-
-    <section class="content">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>I am a web developer with expertise in both front-end and back-end technologies. I have experience in creating responsive and dynamic web applications using HTML, CSS, JavaScript, and various back-end technologies. I also have experience in integrating APIs to enhance the functionality of web applications.</p>
-        </div>
-    </section>
-
+    <hr class="silver-line">
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="service.html">Services</a>
+        <a href="blogging/machine-learning.html">ML</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="signup.html">Sign Up</a>
+        <a href="list.html">Project List</a>
+    </nav>
+    <div class="container">
+        <h1>Project Checklist</h1>
+        <ul>
+            <li><input type="checkbox"> Project 1</li>
+            <li><input type="checkbox"> Project 2</li>
+            <li><input type="checkbox"> Project 3</li>
+            <!-- Add more projects as needed -->
+        </ul>
+    </div>
     <footer>
-        <p>Web Development &copy; 2024</p>
+        <p>&copy; 2024 Software Engineering Services. All rights reserved.</p>
     </footer>
 </body>
 </html>
