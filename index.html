@@ -14,7 +14,7 @@
             margin: 0;
             padding: 0;
             color: #333;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('image/bg.png');
+            background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('image/bg.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -51,7 +51,7 @@
             color: #fff;
         }
         .container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 40px auto;
             padding: 30px;
             background-color: rgba(255, 255, 255, 0.9);
@@ -62,13 +62,13 @@
             text-align: center;
             color: #2d3748;
             margin-bottom: 30px;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 600;
         }
         .project-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 40px;
             justify-content: center;
         }
         @media (max-width: 1024px) {
@@ -84,29 +84,36 @@
         .project-category {
             background-color: #f8f9fa;
             border-radius: 8px;
-            padding: 20px;
+            padding: 0 15px 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 0.9rem;
         }
-        .project-category h2 {
-            color: #4a5568;
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
+        .project-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
         .project-category ul {
             list-style-type: none;
             padding: 0;
+            margin: 0;
         }
         .project-category li {
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+            padding: 3px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .project-category li:hover {
+            background-color: rgba(102, 126, 234, 0.1);
         }
         .project-category a {
             color: #4a5568;
             text-decoration: none;
             transition: color 0.3s ease;
+            display: block;
         }
         .project-category a:hover {
             color: #667eea;
@@ -117,6 +124,22 @@
             text-align: center;
             padding: 1.5rem 0;
             margin-top: 40px;
+        }
+        .project-category h2 {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin: 0 -15px 10px;
+            padding: 10px 15px;
+            background-color: #667eea;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .project-category h2::after {
+            content: none;
+        }
+        /* Add this new style to create more space between rows */
+        .project-category:nth-child(n+4) {
+            margin-top: 0;
         }
     </style>
 </head>
@@ -142,10 +165,10 @@
                 <h2>Hobby</h2>
                 <ul>
                     <li><a href="https://projects.johnsonmarketer.com">Online Dictionary</a></li>
-                    <li><a href="https://projects.johnsonmarketer.com">Start a vegetable garden</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Start a vegetable </a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Take up photography</a></li>
-                    <li><a href="https://projects.johnsonmarketer.com">Join a local book club</a></li>
-                    <li><a href="https://projects.johnsonmarketer.com">Try out pottery classes</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Join a local book </a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Try out pottery clas</a></li>
                 </ul>
             </div>
             <div class="project-category">
@@ -154,8 +177,8 @@
                     <li><a href="https://projects.johnsonmarketer.com">Brave Dino</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Tic Tac Toe</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Connect Four</a></li>
-                    <li><a href="https://projects.johnsonmarketer.com">Organize a local gaming tournament</a></li>
-                    <li><a href="https://projects.johnsonmarketer.com">Learn to speedrun a classic game</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Organize a local gaming</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Learn to speedrun ae</a></li>
                 </ul>
             </div>
             <div class="project-category">
@@ -165,17 +188,17 @@
                     <li><a href="https://projects.johnsonmarketer.com">Calculator</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Unit Converter</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Optimize the sales funnel</a></li>
-                    <li><a href="https://projects.johnsonmarketer.com">Create a 5-year business expansion plan</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Create a 5-year  plan</a></li>
                 </ul>
             </div>
             <div class="project-category">
                 <h2>Life</h2>
                 <ul>
                     <li><a href="https://projects.johnsonmarketer.com">Meditation Timer</a></li>
-                    <li><a href="https://projects.johnsonmarketer.com">Start a daily meditation practice</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Start a daily medita</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Learn a new language</a></li>
-                    <li><a href="https://projects.johnsonmarketer.com">Plan a solo travel adventure</a></li>
-                    <li><a href="https://projects.johnsonmarketer.com">Volunteer at a local charity</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Plan a solo travel adv</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Volunteer at a local </a></li>
                 </ul>
             </div>
             <div class="project-category">
@@ -183,7 +206,7 @@
                 <ul>
                     <li><a href="https://projects.johnsonmarketer.com">Create a monthly budget</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Set up an emergency fund</a></li>
-                    <li><a href="https://projects.johnsonmarketer.com">Research and start investing in index funds</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Research and start investing</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Pay off credit card debt</a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Meet with a financial advisor</a></li>
                 </ul>
@@ -191,11 +214,43 @@
             <div class="project-category">
                 <h2>Machine Learning</h2>
                 <ul>
-                    <li><a href="https://projects.johnsonmarketer.com">Complete an online machine learning course</a></li>
-                    <li><a href="https://projects.johnsonmarketer.com">Implement a neural network from scratch</a></li>
-                    <li><a href="https://projects.johnsonmarketer.com">Participate in a Kaggle competition</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Complete an online machin</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Implement a neural netwo</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Participate in a Kaggle </a></li>
                     <li><a href="https://projects.johnsonmarketer.com">Build a recommendation system</a></li>
-                    <li><a href="https://projects.johnsonmarketer.com">Explore natural language processing techniques</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Explore natural language </a></li>
+                </ul>
+            </div>
+            
+            <!-- New columns added here -->
+            <div class="project-category">
+                <h2>Health</h2>
+                <ul>
+                    <li><a href="https://projects.johnsonmarketer.com">Start a workout routine</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Plan healthy meals</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Practice mindfulness</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Get regular health checkups</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Improve sleep habits</a></li>
+                </ul>
+            </div>
+            <div class="project-category">
+                <h2>Education</h2>
+                <ul>
+                    <li><a href="https://projects.johnsonmarketer.com">Take an online course</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Read educational books</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Attend workshops</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Learn a new skill</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Teach others</a></li>
+                </ul>
+            </div>
+            <div class="project-category">
+                <h2>Technology</h2>
+                <ul>
+                    <li><a href="https://projects.johnsonmarketer.com">Learn a new programming language</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Build a personal website</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Explore AI and machine learning</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Contribute to open source</a></li>
+                    <li><a href="https://projects.johnsonmarketer.com">Stay updated with tech news</a></li>
                 </ul>
             </div>
         </div>
