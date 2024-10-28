@@ -54,9 +54,11 @@
             max-width: 900px;
             margin: 40px auto;
             padding: 30px;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(255, 255, 255, 0.7); /* Changed from 0.9 to 0.7 for more transparency */
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             border-radius: 12px;
+            backdrop-filter: blur(5px); /* Added blur effect for better readability */
+            -webkit-backdrop-filter: blur(5px); /* For Safari support */
         }
         h1 {
             text-align: center;
@@ -82,7 +84,7 @@
             }
         }
         .project-category {
-            background-color: #f8f9fa;
+            background-color: rgba(248, 249, 250, 0.8); /* Made slightly transparent */
             border-radius: 8px;
             padding: 0 15px 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -141,6 +143,80 @@
         .project-category:nth-child(n+4) {
             margin-top: 0;
         }
+        .search-container {
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        #searchInput {
+            width: 70%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #667eea;
+            border-radius: 20px 0 0 20px;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border: none;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .search-container button:hover {
+            opacity: 0.9;
+        }
+
+        .highlight {
+            background-image: linear-gradient(to right, rgba(106, 17, 203, 0.4), rgba(37, 117, 252, 0.4));
+            border-radius: 3px;
+            padding: 2px 5px;
+            margin: 0 -5px;
+            position: relative;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+            color: #000;
+            font-weight: 600;
+            text-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 8px rgba(106, 17, 203, 0.3);
+        }
+
+        /* Updated animation for more visibility */
+        @keyframes highlightPulse {
+            0% { 
+                transform: scale(1);
+                box-shadow: 0 0 8px rgba(106, 17, 203, 0.3);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 0 12px rgba(37, 117, 252, 0.5);
+            }
+            100% { 
+                transform: scale(1);
+                box-shadow: 0 0 8px rgba(106, 17, 203, 0.3);
+            }
+        }
+
+        .highlight {
+            animation: highlightPulse 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        /* Add styles for the parent element when it contains a highlight */
+        .project-category a:has(.highlight) {
+            background-color: rgba(106, 17, 203, 0.1);
+            display: block;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
     </style>
 </head>
 <body>
@@ -158,6 +234,11 @@
         <a href="signup.html">Sign Up</a>
         <a href="list.html">Project List</a>
     </nav>
+    <!-- Add this right after the nav section and before the container div -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search projects...">
+        <button onclick="searchProjects()">Search</button>
+    </div>
     <div class="container">
         <h1>Project Checklist</h1>
         <div class="project-grid">
@@ -257,5 +338,65 @@
     <footer>
         <p>&copy; 2024 Software Engineering Services. All rights reserved.</p>
     </footer>
+    <!-- Add this script tag at the bottom of the body -->
+    <script>
+        function searchProjects() {
+            // Get the search input value
+            const searchText = document.getElementById('searchInput').value.toLowerCase();
+            
+            // Remove existing highlights
+            const existingHighlights = document.querySelectorAll('.highlight');
+            existingHighlights.forEach(highlight => {
+                const parent = highlight.parentNode;
+                parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
+            });
+
+            if (searchText.trim() === '') return;
+
+            // Get all project links
+            const projectLinks = document.querySelectorAll('.project-category a');
+            let firstMatch = null;
+
+            projectLinks.forEach(link => {
+                const text = link.textContent.toLowerCase();
+                if (text.includes(searchText)) {
+                    // Highlight matching text
+                    const regex = new RegExp(searchText, 'gi');
+                    const newText = link.textContent.replace(regex, match => 
+                        `<span class="highlight">${match}</span>`
+                    );
+                    link.innerHTML = newText;
+
+                    // Store first match for scrolling
+                    if (!firstMatch) {
+                        firstMatch = link;
+                    }
+                }
+            });
+
+            // Scroll to first match if found
+            if (firstMatch) {
+                firstMatch.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }
+        }
+
+        // Add event listener for Enter key
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchProjects();
+            }
+        });
+
+        // Add event listener for Ctrl+F or Cmd+F
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+                e.preventDefault(); // Prevent default browser search
+                document.getElementById('searchInput').focus();
+            }
+        });
+    </script>
 </body>
 </html>
