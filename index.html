@@ -327,22 +327,16 @@
             border-radius: 12px 12px 0 0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: space-between;
         }
 
-        .back-button, .close-chat {
+        .close-chat {
             background: none;
             border: none;
             color: white;
             font-size: 20px;
             cursor: pointer;
             padding: 0;
-        }
-
-        .chat-header h3 {
-            margin: 0;
-            flex-grow: 1;
-            font-size: 16px;
         }
 
         .chat-messages {
@@ -352,19 +346,11 @@
             background-color: #f5f5f5;
         }
 
-        .timestamp {
-            text-align: center;
-            color: #666;
-            font-size: 12px;
-            margin: 10px 0;
-        }
-
         .message {
             margin-bottom: 10px;
             padding: 10px 12px;
             border-radius: 12px;
             max-width: 80%;
-            font-size: 14px;
         }
 
         .message.bot {
@@ -378,12 +364,6 @@
             color: white;
             margin-left: auto;
             border-radius: 12px 0 12px 12px;
-        }
-
-        .message-info {
-            font-size: 12px;
-            color: #666;
-            margin-top: 4px;
         }
 
         .chat-options {
@@ -534,85 +514,7 @@
     <footer>
         <p>&copy; 2024 Software Engineering Services. All rights reserved.</p>
     </footer>
-    <!-- Add this script tag at the bottom of the body -->
-    <script>
-        function searchProjects() {
-            // Get the search input value
-            const searchText = document.getElementById('searchInput').value.toLowerCase();
-            
-            // Remove existing highlights
-            const existingHighlights = document.querySelectorAll('.highlight');
-            existingHighlights.forEach(highlight => {
-                const parent = highlight.parentNode;
-                parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
-            });
-
-            if (searchText.trim() === '') return;
-
-            // Get all project links
-            const projectLinks = document.querySelectorAll('.project-category a');
-            let firstMatch = null;
-
-            projectLinks.forEach(link => {
-                const text = link.textContent.toLowerCase();
-                if (text.includes(searchText)) {
-                    // Highlight matching text
-                    const regex = new RegExp(searchText, 'gi');
-                    const newText = link.textContent.replace(regex, match => 
-                        `<span class="highlight">${match}</span>`
-                    );
-                    link.innerHTML = newText;
-
-                    // Store first match for scrolling
-                    if (!firstMatch) {
-                        firstMatch = link;
-                    }
-                }
-            });
-
-            // Scroll to first match if found
-            if (firstMatch) {
-                firstMatch.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
-                });
-            }
-        }
-
-        // Add event listener for Enter key
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                searchProjects();
-            }
-        });
-
-        // Add event listener for Ctrl+F or Cmd+F
-        document.addEventListener('keydown', function(e) {
-            if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
-                e.preventDefault(); // Prevent default browser search
-                document.getElementById('searchInput').focus();
-            }
-        });
-
-        // Back to top functionality
-        const backToTopBtn = document.getElementById('backToTopBtn');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('visible');
-            } else {
-                backToTopBtn.classList.remove('visible');
-            }
-        });
-
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-    </script>
-    <!-- First, update the chat widget HTML structure right before the closing </body> tag -->
+    <!-- Add this right before the closing </body> tag, before the projects.js script -->
     <div class="chat-widget" id="chatWidget">
         <div class="chat-button" id="chatButton">
             <div class="chat-button-content">
@@ -642,55 +544,7 @@
             </div>
         </div>
     </div>
-    <!-- Add this JavaScript right before the closing </body> tag, after the chat widget HTML -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Get DOM elements
-        const chatWidget = document.getElementById('chatWidget');
-        const chatButton = document.getElementById('chatButton');
-        const chatContainer = document.getElementById('chatContainer');
-        const closeChat = document.getElementById('closeChat');
-        const chatMessages = document.getElementById('chatMessages');
 
-        // Initialize chat
-        if (chatButton && chatContainer && closeChat) {
-            // Open chat
-            chatButton.addEventListener('click', function() {
-                chatContainer.style.display = 'flex';
-                chatButton.style.display = 'none';
-            });
-
-            // Close chat
-            closeChat.addEventListener('click', function() {
-                chatContainer.style.display = 'none';
-                chatButton.style.display = 'flex';
-            });
-        }
-
-        // Function to add a message to the chat
-        window.sendMessage = function(text) {
-            // Add user message
-            const userMessage = document.createElement('div');
-            userMessage.className = 'message user';
-            userMessage.textContent = text;
-            chatMessages.appendChild(userMessage);
-
-            // Simulate bot response
-            setTimeout(() => {
-                const botMessage = document.createElement('div');
-                botMessage.className = 'message bot';
-                botMessage.innerHTML = `Thank you for your message about "${text}". Our team will respond shortly.
-                    <div class="message-info">Automated • Just now</div>`;
-                chatMessages.appendChild(botMessage);
-                
-                // Scroll to bottom
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 1000);
-
-            // Scroll to bottom
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        };
-    });
-    </script>
+    <script src="projects.js"></script>
 </body>
 </html>
