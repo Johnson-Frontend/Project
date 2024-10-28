@@ -54,11 +54,11 @@
             max-width: 900px;
             margin: 40px auto;
             padding: 30px;
-            background-color: rgba(255, 255, 255, 0.7); /* Changed from 0.9 to 0.7 for more transparency */
+            background-color: rgba(255, 255, 255, 0.5);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             border-radius: 12px;
-            backdrop-filter: blur(5px); /* Added blur effect for better readability */
-            -webkit-backdrop-filter: blur(5px); /* For Safari support */
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
         h1 {
             text-align: center;
@@ -84,7 +84,7 @@
             }
         }
         .project-category {
-            background-color: rgba(248, 249, 250, 0.8); /* Made slightly transparent */
+            background-color: rgba(248, 249, 250, 0.6);
             border-radius: 8px;
             padding: 0 15px 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -92,6 +92,8 @@
             flex-direction: column;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             font-size: 0.9rem;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
         .project-category:hover {
             transform: translateY(-5px);
@@ -132,9 +134,11 @@
             font-size: 1.2rem;
             margin: 0 -15px 10px;
             padding: 10px 15px;
-            background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%); /* Updated gradient background */
+            background-image: linear-gradient(to right, rgba(106, 17, 203, 0.8) 20%, rgba(37, 117, 252, 0.8) 80%);
             border-radius: 8px 8px 0 0;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: 500; /* Reduced from 600 if it was set */
+            letter-spacing: 0.5px; /* Added for better readability */
         }
         .project-category h2::after {
             content: none;
@@ -163,7 +167,7 @@
         .search-container button {
             padding: 10px 20px;
             font-size: 16px;
-            background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+            background-image: linear-gradient(to right, #6a11cb 20%, #2575fc 80%);
             color: white;
             border: none;
             border-radius: 0 20px 20px 0;
@@ -216,6 +220,44 @@
             display: block;
             border-radius: 4px;
             transition: all 0.3s ease;
+        }
+
+        /* Add a subtle hover effect */
+        .project-category:hover h2 {
+            background-image: linear-gradient(to right, rgba(106, 17, 203, 0.9) 20%, rgba(37, 117, 252, 0.9) 80%);
+            transition: background-image 0.3s ease;
+        }
+
+        .back-to-top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            padding: 10px;
+            margin: 20px auto 40px;
+            text-align: center;
+        }
+
+        .back-to-top img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .back-to-top:hover img {
+            transform: translateY(-5px);
+        }
+
+        .back-to-top span {
+            color: #4a5568;
+            font-size: 1.1rem;
+            font-weight: 500;
+            white-space: nowrap;
+            margin-top: 5px;
         }
     </style>
 </head>
@@ -335,6 +377,10 @@
             </div>
         </div>
     </div>
+    <div class="back-to-top" id="backToTopBtn" onclick="scrollToTop()">
+        <img src="https://raw.githubusercontent.com/Johnson-Frontend/cursor/779f665d6ce26b8a0540cf6231f0d20e8c3519ff/image/top.svg" alt="Back to Top">
+        <span>Back To Top</span>
+    </div>
     <footer>
         <p>&copy; 2024 Software Engineering Services. All rights reserved.</p>
     </footer>
@@ -397,6 +443,24 @@
                 document.getElementById('searchInput').focus();
             }
         });
+
+        // Back to top functionality
+        const backToTopBtn = document.getElementById('backToTopBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
     </script>
 </body>
 </html>
