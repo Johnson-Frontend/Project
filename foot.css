@@ -83,11 +83,11 @@
     justify-content: space-between;
     align-items: flex-start;
     padding: 20px;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     background: linear-gradient(135deg, #d9e2ec);
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    box-shadow: 4px 4px 26px rgba(0.1, 0.1, 0.1, 0.1);
 }
 
 .footer-section.brand {
@@ -155,13 +155,12 @@
 .footer-bottom {
     text-align: center;
     margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
     background: none;
 }
 
 .footer-bottom p {
-    font-size: 0.9rem;
+    font-size: 0.6rem;
     color: #ffffff;
 }
 
