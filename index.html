@@ -14,7 +14,7 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            color: #333;
+            color: #fff;
             background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('image/bg.png');
             background-size: cover;
             background-position: center;
@@ -23,40 +23,62 @@
             min-height: 100vh;
         }
         header {
-            background-image: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
-            color: #fff;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            padding: 1.5rem 0;
             text-align: center;
-            padding: 2rem 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         nav {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            margin-left: 145px;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-left: -50px;
+        }
+        .nav-logo:hover {
+            transform: scale(1.05);
+        }
+        .nav-logo img {
+            max-width: 45px;
+            margin-right: 10px;
+            transition: transform 0.5s ease;
+        }
+        .nav-logo:hover img {
+            transform: scale(1.05);
+        }
+        .nav-logo span {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
         }
         nav a {
-            color: #4a5568;
-            margin: 0 1rem;
+            color: #fff;
+            margin: 0 0.5rem;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 0.9rem;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            transition: all 0.3s ease;
+            padding: 0.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
         nav a:hover {
-            background-color: #667eea;
-            color: #fff;
+            color: #ffcc00;
+            transform: translateY(-2px);
         }
         .container {
             max-width: 900px;
             margin: 40px auto;
             padding: 30px;
             background-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             border-radius: 12px;
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
@@ -150,9 +172,9 @@
         }
         .search-container {
             max-width: 600px;
-            margin: 20px auto;
+            margin: 60px auto;
             text-align: center;
-            padding: 0 20px;
+            padding: 30px 20px;
         }
 
         #searchInput {
@@ -653,24 +675,35 @@
         .footer-bottom p {
             text-align: center;
         }
+
+        .header-separator {
+            height: 20px; /* Adjust height as needed */
+            background-color: #f0f0f0; /* Light background color for separation */
+        }
+
+        header {
+            margin-bottom: 0; /* Ensure no margin below header */
+        }
     </style>
 </head>
 <body>
     <header>
-        <a href="index.html">
-            <img src="image/logo.svg" alt="Software Engineering Services Logo" style="max-width: 60px;">
-        </a>
+        <nav>
+            <div class="nav-logo">
+                <img id="logo" src="image/logo.svg" alt="Brand Logo">
+                <span>ByteBoost</span>
+            </div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="service.html">Services</a>
+                <a href="blogging/machine-learning.html">ML</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="list.html">Project List</a>
+            </nav>
+        </nav>
     </header>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="service.html">Services</a>
-        <a href="blogging/machine-learning.html">ML</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a href="signup.html">Sign Up</a>
-        <a href="list.html">Project List</a>
-    </nav>
-    <!-- Add this right after the nav section and before the container div -->
+    <div class="header-separator"></div>
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Search projects...">
         <button onclick="searchProjects()">Search</button>
@@ -835,6 +868,56 @@
             // Implement your send message functionality here
             console.log(message);
         }
+
+        document.getElementById('searchInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                searchProjects();
+            }
+        });
+
+        function searchProjects() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const projectCategories = document.querySelectorAll('.project-category');
+            let firstMatch = null;
+
+            projectCategories.forEach(category => {
+                const links = category.querySelectorAll('a');
+                links.forEach(link => {
+                    const text = link.textContent.toLowerCase();
+                    if (text.includes(input) && input !== '') {
+                        link.innerHTML = link.textContent.replace(new RegExp(input, 'gi'), match => `<span class="highlight">${match}</span>`);
+                        if (!firstMatch) {
+                            firstMatch = link; // Store the first match
+                        }
+                    } else {
+                        link.innerHTML = link.textContent; // Remove highlight if not matched
+                    }
+                });
+            });
+
+            if (firstMatch) {
+                firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            document.getElementById('searchInput').value = ''; // Clear the search input
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        const logo = document.getElementById('logo');
+
+        logo.addEventListener('mouseover', () => {
+            logo.src = 'image/gif.gif'; // Change to GIF on hover
+        });
+
+        logo.addEventListener('mouseout', () => {
+            logo.src = 'image/logo.svg'; // Change back to SVG when not hovered
+        });
     </script>
 </body>
 </html>
