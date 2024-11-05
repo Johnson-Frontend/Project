@@ -831,9 +831,9 @@
                 </div>
             </div>
             <div class="chat-options">
-                <button class="option-button" onclick="sendMessage('I need technical support')">Technical Support</button>
-                <button class="option-button" onclick="sendMessage('I want to learn more about your services')">Learn About Services</button>
-                <button class="option-button" onclick="sendMessage('I have a custom project request')">Custom Project Request</button>
+                <button class="option-button" onclick="navigateTo('https://www.johnsonmarketer.com')">Back to Home</button>
+                <button class="option-button" onclick="navigateTo('https://projects.johnsonmarketer.com')">Back to Project Checklist</button>
+                <button class="option-button" onclick="navigateTo('https://shortcuts.johnsonmarketer.com')">Back to Shortcuts</button>
             </div>
         </div>
     </div>
@@ -863,43 +863,51 @@
         });
 
         function sendMessage(message) {
-            // Implement your send message functionality here
             console.log(message);
         }
 
-        document.getElementById('searchInput').addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                searchProjects();
-            }
-        });
+        function navigateTo(url) {
+            window.location.href = url;
+        }
 
+        // Search functionality
         function searchProjects() {
-            const input = document.getElementById('searchInput').value.toLowerCase();
-            const projectCategories = document.querySelectorAll('.project-category');
+            const searchText = document.getElementById('searchInput').value.toLowerCase();
+            const existingHighlights = document.querySelectorAll('.highlight');
+            existingHighlights.forEach(highlight => {
+                const parent = highlight.parentNode;
+                parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
+            });
+
+            if (searchText.trim() === '') return;
+
+            const projectLinks = document.querySelectorAll('.project-category a');
             let firstMatch = null;
 
-            projectCategories.forEach(category => {
-                const links = category.querySelectorAll('a');
-                links.forEach(link => {
-                    const text = link.textContent.toLowerCase();
-                    if (text.includes(input) && input !== '') {
-                        link.innerHTML = link.textContent.replace(new RegExp(input, 'gi'), match => `<span class="highlight">${match}</span>`);
-                        if (!firstMatch) {
-                            firstMatch = link; // Store the first match
-                        }
-                    } else {
-                        link.innerHTML = link.textContent; // Remove highlight if not matched
+            projectLinks.forEach(link => {
+                const text = link.textContent.toLowerCase();
+                if (text.includes(searchText)) {
+                    const regex = new RegExp(searchText, 'gi');
+                    const newText = link.textContent.replace(regex, match => 
+                        `<span class="highlight">${match}</span>`
+                    );
+                    link.innerHTML = newText;
+
+                    if (!firstMatch) {
+                        firstMatch = link;
                     }
-                });
+                }
             });
 
             if (firstMatch) {
-                firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                firstMatch.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
             }
-
-            document.getElementById('searchInput').value = ''; // Clear the search input
         }
 
+        // Back to top functionality
         function scrollToTop() {
             window.scrollTo({
                 top: 0,
@@ -907,14 +915,33 @@
             });
         }
 
-        const logo = document.getElementById('logo');
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        searchProjects();
+                    }
+                });
+            }
 
-        logo.addEventListener('mouseover', () => {
-            logo.src = 'image/gif.gif'; // Change to GIF on hover
-        });
+            document.addEventListener('keydown', function(e) {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+                    e.preventDefault();
+                    document.getElementById('searchInput').focus();
+                }
+            });
 
-        logo.addEventListener('mouseout', () => {
-            logo.src = 'image/logo.svg'; // Change back to SVG when not hovered
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if (backToTopBtn) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 300) {
+                        backToTopBtn.classList.add('visible');
+                    } else {
+                        backToTopBtn.classList.remove('visible');
+                    }
+                });
+            }
         });
     </script>
 </body>
