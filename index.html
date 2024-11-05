@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        body, html {
+            overflow-x: hidden; /* Prevent horizontal overflow */
+        }
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
@@ -683,6 +686,219 @@
         header {
             margin-bottom: 0; /* Ensure no margin below header */
         }
+
+        /* Footer styles from foot.css */
+        .footer-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-list li {
+            margin-bottom: 10px;
+        }
+
+        .footer-list a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 16px;    
+            transition: color 0.3s ease;
+        }
+
+        .footer-list a:hover,
+        .footer-list a:focus {
+            color: #ffcc00;
+        }
+
+        .footer-section {
+            padding: 10px;
+        }
+
+        .footer-logo {
+            width: 60px;
+            margin-bottom: 15px;
+            filter: brightness(0) invert(1);
+        }
+
+        .tagline {
+            font-size: 0.8rem;
+            color: #ffffff;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+
+        .social-link {
+            color: #fff;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: none;
+        }
+
+        .footer-bottom p {
+            font-size: 0.9rem;
+            color: #ffffff;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #d9e2ec);
+            border-radius: 20px;
+            box-shadow: 4px 4px 26px rgba(0.1, 0.1, 0.1, 0.1);
+        }
+
+        .footer-section.brand {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+
+        .footer-sections {
+            display: flex;
+            flex: 3;
+            justify-content: space-between;
+        }
+
+        .footer-section {
+            flex: 1;
+            padding: 10px 20px;
+            box-sizing: border-box;
+        }
+
+        .footer-logo {
+            max-width: 75px;
+            margin-bottom: 15px;
+            filter: brightness(0) invert(1);
+        }
+
+        .tagline {
+            font-size: 0.8rem;
+            color: #ffffff;
+            line-height: 1.5;
+            max-width: 300px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px;
+        }
+
+        .social-link {
+            color: #fff;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 10px;
+            background: none;
+        }
+
+        .footer-bottom p {
+            font-size: 0.6rem;
+            color: #ffffff;
+        }
+
+        .footer-section.newsletter {
+            text-align: left;
+            margin-right: 30px;
+        }
+
+        .social-links {
+            justify-content: flex-start;
+            gap: 15px;
+        }
+
+        .newsletter-form {
+            margin-top: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .newsletter-form input[type="email"] {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 250px;
+            background-color: transparent;
+            color: #fff;
+        }
+
+        .newsletter-form input[type="email"]::placeholder {
+            color: #ccc;
+        }
+
+        .newsletter-form button {
+            padding: 8px 16px;
+            background-color: #ffcc00;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #e6b800;
+            transform: translateY(-2px);
+        } 
     </style>
 </head>
 <body>
@@ -838,111 +1054,63 @@
         </div>
     </div>
 
-    <!-- Footer will be loaded here -->
-    <div id="footer-placeholder"></div>
+    <!-- Footer content from footer.html -->
+    <div class="modern-footer">
+        <div class="footer-content">
+            <div class="footer-section brand">
+                <img src="image/gif.gif" alt="Your Logo" class="footer-logo">
+                <p class="tagline">Crafting innovative solutions in software development. <br>Let's connect! <br> Make a Difference Today!</p>
+            </div>
+            <div class="footer-sections">
+                <div class="footer-section office">
+                    <h3>Dev Stacks</h3>
+                    <ol class="footer-list">
+                        <li><a href="#">JavaScript</a></li>
+                        <li><a href="#">React/Vue</a></li>
+                        <li><a href="#">Node.js</a></li>
+                        <li><a href="#">Python</a></li>
+                        <li><a href="#">Java</a></li>
+                        <li><a href="#">SQL</a></li>
+                        <li><a href="#">APIs</a></li>
+                        <li><a href="#">Docker</a></li>
+                        <li><a href="#">Git</a></li>
+                    </ol>
+                </div>
+                <div class="footer-section links">
+                    <h3>Quick Links</h3>
+                    <ol class="footer-list">
+                        <li><a href="#">Projects</a></li>
+                        <li><a href="#">Web Dev</a></li>
+                        <li><a href="#">Mobile Dev</a></li>
+                        <li><a href="#">UI/UX</a></li>
+                        <li><a href="#">Games</a></li>
+                        <li><a href="#">Database</a></li>
+                        <li><a href="#">Networking</a></li>
+                        <li><a href="#">ML</a></li>
+                    </ol>
+                </div>
+                <div class="footer-section newsletter">
+                    <h3>Connect with Me</h3>
+                    <div class="social-links">
+                        <a href="https://github.com/yourusername" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/yourusername" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://wa.me/yourphonenumber" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    <!-- Newsletter Subscription Form -->
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Johnson Wang - All Rights Reserved</p>
+        </div>
+    </div>
 
     <script>
-        // Load the footer
-        fetch('footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('footer-placeholder').innerHTML = data;
-            });
-
-        // Chat widget functionality
-        const chatButton = document.getElementById('chatButton');
-        const chatContainer = document.getElementById('chatContainer');
-        const closeChat = document.getElementById('closeChat');
-
-        chatButton.addEventListener('click', () => {
-            chatContainer.classList.toggle('active');
-        });
-
-        closeChat.addEventListener('click', () => {
-            chatContainer.classList.remove('active');
-        });
-
-        function sendMessage(message) {
-            console.log(message);
-        }
-
-        function navigateTo(url) {
-            window.location.href = url;
-        }
-
-        // Search functionality
-        function searchProjects() {
-            const searchText = document.getElementById('searchInput').value.toLowerCase();
-            const existingHighlights = document.querySelectorAll('.highlight');
-            existingHighlights.forEach(highlight => {
-                const parent = highlight.parentNode;
-                parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
-            });
-
-            if (searchText.trim() === '') return;
-
-            const projectLinks = document.querySelectorAll('.project-category a');
-            let firstMatch = null;
-
-            projectLinks.forEach(link => {
-                const text = link.textContent.toLowerCase();
-                if (text.includes(searchText)) {
-                    const regex = new RegExp(searchText, 'gi');
-                    const newText = link.textContent.replace(regex, match => 
-                        `<span class="highlight">${match}</span>`
-                    );
-                    link.innerHTML = newText;
-
-                    if (!firstMatch) {
-                        firstMatch = link;
-                    }
-                }
-            });
-
-            if (firstMatch) {
-                firstMatch.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'center'
-                });
-            }
-        }
-
-        // Back to top functionality
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('searchInput');
-            if (searchInput) {
-                searchInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        searchProjects();
-                    }
-                });
-            }
-
-            document.addEventListener('keydown', function(e) {
-                if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
-                    e.preventDefault();
-                    document.getElementById('searchInput').focus();
-                }
-            });
-
-            const backToTopBtn = document.getElementById('backToTopBtn');
-            if (backToTopBtn) {
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 300) {
-                        backToTopBtn.classList.add('visible');
-                    } else {
-                        backToTopBtn.classList.remove('visible');
-                    }
-                });
-            }
-        });
+        // JavaScript code here
     </script>
 </body>
 </html>
