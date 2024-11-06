@@ -185,7 +185,7 @@
         }
         .search-container {
             position: absolute; /* Position the search container absolutely */
-            top: 50%; /* Center vertically */
+            top: calc(50% - 10px); /* Move up by 10px */
             left: 50%; /* Center horizontally */
             transform: translate(-50%, -50%); /* Adjust for the element's own dimensions */
             z-index: 2; /* Ensure it appears above the hero image */
@@ -193,7 +193,8 @@
             display: flex; /* Use flexbox for alignment */
             align-items: center; /* Center items vertically */
             width: 80%; /* Set a fixed width for the search container */
-            max-width: 600px; /* Optional: limit the maximum width */
+            max-width: 480px; /* Optional: limit the maximum width */
+            margin: 0; /* Remove any default margin */
         }
 
         #searchInput {
@@ -207,11 +208,12 @@
         }
 
         .search-container button {
-            padding: 10px 20px;
+            padding: 11px 25px;
             font-size: 16px;
             background-image: linear-gradient(to right, #6a11cb 20%, #2575fc 80%);
             color: white;
             border: none;
+            margin-left: 2px; /* Overlap the border with the input */
             border-radius: 0 20px 20px 0;
             cursor: pointer;
             font-family: 'Poppins', sans-serif;
@@ -960,7 +962,7 @@
 
         .search-container {
             position: absolute; /* Position the search container absolutely */
-            top: 50%; /* Center vertically */
+            top: calc(50% - 10px); /* Move up by 10px */
             left: 50%; /* Center horizontally */
             transform: translate(-50%, -50%); /* Adjust for the element's own dimensions */
             z-index: 2; /* Ensure it appears above the hero image */
