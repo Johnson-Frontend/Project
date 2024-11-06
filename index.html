@@ -1232,6 +1232,11 @@
             });
         }
 
+        function scrollToTop() {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const projectListLink = document.querySelector('.project-list-link');
             if (projectListLink) {
