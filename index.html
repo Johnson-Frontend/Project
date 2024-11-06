@@ -938,6 +938,10 @@
                 transform: scale(1);
             }
         }
+
+        #searchInput::placeholder {
+            color: #aaa; /* Light grey color for placeholder */
+        }
     </style>
 </head>
 <body>
@@ -961,7 +965,7 @@
     </header>
     <div class="header-separator"></div>
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search Johnson's projects...">
+        <input type="text" id="searchInput" placeholder="">
         <button onclick="searchProjects()">Search</button>
     </div>
     <div class="container">
@@ -1216,6 +1220,27 @@
                     projectListLink.classList.remove('pulse');
                 }, 1500); // Remove the pulse class after 1.5 seconds
             }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const placeholderText = "Search Johnson's projects...";
+            let index = 0;
+
+            function type() {
+                if (index < placeholderText.length) {
+                    searchInput.setAttribute('placeholder', placeholderText.substring(0, index + 1));
+                    index++;
+                    setTimeout(type, 100); // Adjust typing speed here
+                } else {
+                    setTimeout(() => {
+                        index = 0;
+                        type();
+                    }, 2000); // Pause before restarting
+                }
+            }
+
+            type();
         });
     </script>
 </body>
