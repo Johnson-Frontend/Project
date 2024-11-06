@@ -1161,6 +1161,9 @@
             const closeChat = document.getElementById('closeChat');
             const searchInput = document.getElementById('searchInput');
 
+            // Set focus to the search input on page load
+            searchInput.focus();
+
             // Toggle chat container visibility
             chatButton.addEventListener('click', function() {
                 chatContainer.classList.toggle('active');
