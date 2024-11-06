@@ -89,7 +89,7 @@
         }
         .container {
             max-width: 900px;
-            margin: 40px auto;
+            margin: 10px auto;
             padding: 30px;
             background-color: rgba(255, 255, 255, 0.5);
             border-radius: 12px;
@@ -949,6 +949,9 @@
         .hero-image {
             position: relative; /* Ensure the hero image is positioned relative */
             z-index: 1; /* Keep the image below the search container */
+            display: block; /* Ensure the image is a block element */
+            margin: 0; /* Remove any default margin */
+            padding: 0; /* Remove any default padding */
         }
 
         .search-container {
@@ -962,6 +965,7 @@
             align-items: center; /* Center items vertically */
             width: 80%; /* Set a fixed width for the search container */
             max-width: 480px; /* Optional: limit the maximum width */
+            margin: 0; /* Remove any default margin */
         }
 
         #searchInput {
@@ -1012,7 +1016,6 @@
             </nav>
         </nav>
     </header>
-    <div class="header-separator"></div>
     <img src="image/goggle.png" alt="Hero Image" class="hero-image">
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="">
