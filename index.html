@@ -184,14 +184,20 @@
             margin-top: 0;
         }
         .search-container {
-            max-width: 600px;
-            margin: 60px auto;
-            text-align: center;
-            padding: 30px 20px;
+            position: absolute; /* Position the search container absolutely */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Adjust for the element's own dimensions */
+            z-index: 2; /* Ensure it appears above the hero image */
+            text-align: center; /* Center text inside the search container */
+            display: flex; /* Use flexbox for alignment */
+            align-items: center; /* Center items vertically */
+            width: 80%; /* Set a fixed width for the search container */
+            max-width: 600px; /* Optional: limit the maximum width */
         }
 
         #searchInput {
-            width: 70%;
+            flex: 1; /* Allow the input to take available space */
             padding: 10px;
             font-size: 16px;
             border: 2px solid #667eea;
@@ -938,6 +944,49 @@
 
         #searchInput::placeholder {
             color: #aaa; /* Light grey color for placeholder */
+        }
+
+        .hero-image {
+            position: relative; /* Ensure the hero image is positioned relative */
+            z-index: 1; /* Keep the image below the search container */
+        }
+
+        .search-container {
+            position: absolute; /* Position the search container absolutely */
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Adjust for the element's own dimensions */
+            z-index: 2; /* Ensure it appears above the hero image */
+            text-align: center; /* Center text inside the search container */
+            display: flex; /* Use flexbox for alignment */
+            align-items: center; /* Center items vertically */
+            width: 80%; /* Set a fixed width for the search container */
+            max-width: 480px; /* Optional: limit the maximum width */
+        }
+
+        #searchInput {
+            flex: 1; /* Allow the input to take available space */
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #667eea;
+            border-radius: 20px 0 0 20px;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-image: linear-gradient(to right, #6a11cb 20%, #2575fc 80%);
+            color: white;
+            border: none;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .search-container button:hover {
+            opacity: 0.9;
         }
     </style>
 </head>
