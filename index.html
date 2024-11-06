@@ -1126,6 +1126,7 @@
             const chatButton = document.getElementById('chatButton');
             const chatContainer = document.getElementById('chatContainer');
             const closeChat = document.getElementById('closeChat');
+            const searchInput = document.getElementById('searchInput');
 
             // Toggle chat container visibility
             chatButton.addEventListener('click', function() {
@@ -1136,10 +1137,46 @@
             closeChat.addEventListener('click', function() {
                 chatContainer.classList.remove('active');
             });
+
+            // Trigger search on Enter key press
+            searchInput.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault(); // Prevent form submission if inside a form
+                    searchProjects();
+                    searchInput.value = ''; // Clear the input
+                }
+            });
         });
 
         function navigateTo(url) {
             window.location.href = url;
+        }
+
+        function searchProjects() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const projectCategories = document.querySelectorAll('.project-category');
+            let firstMatch = null;
+
+            projectCategories.forEach(category => {
+                const links = category.querySelectorAll('a');
+
+                links.forEach(link => {
+                    const text = link.textContent.toLowerCase();
+                    if (text.includes(input)) {
+                        link.innerHTML = text.replace(new RegExp(input, 'gi'), match => `<span class="highlight">${match}</span>`);
+                        if (!firstMatch) {
+                            firstMatch = link;
+                        }
+                    } else {
+                        link.innerHTML = text; // Reset the link text
+                    }
+                });
+            });
+
+            // Scroll to the first matching result
+            if (firstMatch) {
+                firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         }
     </script>
 </body>
