@@ -950,8 +950,12 @@
             position: relative; /* Ensure the hero image is positioned relative */
             z-index: 1; /* Keep the image below the search container */
             display: block; /* Ensure the image is a block element */
-            margin: 0; /* Remove any default margin */
+            margin: 0 auto; /* Center the image horizontally */
             padding: 0; /* Remove any default padding */
+            width: 100%; /* Make the image take the full width of its container */
+            height: auto; /* Maintain the aspect ratio */
+            object-fit: cover; /* Ensure the image covers the container */
+            object-position: center; /* Center the image within its container */
         }
 
         .search-container {
