@@ -909,6 +909,39 @@
             background-color: #e6b800;
             transform: translateY(-2px);
         } 
+
+        .project-list-link {
+            color: #fff; /* Text color */
+            background: linear-gradient(135deg, #9b59b6, #3498db); /* Purple to blue gradient */
+            padding: 0.5rem 1rem; /* Padding for better appearance */
+            border-radius: 15px; /* Larger rounded corners */
+            position: relative; /* For positioning the animation */
+            transition: background 0.3s ease, transform 0.3s ease; /* Smooth transition */
+            display: inline-block; /* Ensure proper padding */
+        }
+
+        .project-list-link:hover {
+            background-color: #f1c40f; /* Yellow background on hover */
+            color: #fff; /* White text on hover */
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+
+        .project-list-link.pulse {
+            animation: pulse 1.5s ease infinite; /* Pulse animation */
+            animation-iteration-count: 1; /* Pulse only once */
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 <body>
@@ -926,7 +959,7 @@
                 <a href="blogging/machine-learning.html">ML</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
-                <a href="projects.johnsonmarketer.com">Project List</a>
+                <a href="projects.johnsonmarketer.com" class="project-list-link">Project List</a>
             </nav>
         </nav>
     </header>
@@ -1178,6 +1211,16 @@
                 firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectListLink = document.querySelector('.project-list-link');
+            if (projectListLink) {
+                projectListLink.classList.add('pulse');
+                setTimeout(() => {
+                    projectListLink.classList.remove('pulse');
+                }, 1500); // Remove the pulse class after 1.5 seconds
+            }
+        });
     </script>
 </body>
 </html>
