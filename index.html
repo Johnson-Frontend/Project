@@ -32,6 +32,16 @@
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;
             box-shadow: none;
+            height: auto; /* Ensure header height is auto */
+        }
+        .nav-logo a {
+            display: inline-block; /* Ensure the anchor tag does not affect the layout */
+        }
+        .nav-logo img {
+            max-width: 45px;
+            margin-right: 10px;
+            transition: transform 0.5s ease;
+            vertical-align: middle; /* Align image vertically */
         }
         nav {
             display: flex;
@@ -905,7 +915,9 @@
     <header>
         <nav>
             <div class="nav-logo">
-                <img id="logo" src="image/logo.svg" alt="Brand Logo">
+                <a href="https://www.johnsonmarketer.com">
+                    <img id="logo" src="image/logo.svg" alt="Brand Logo">
+                </a>
                 <span>ByteBoost</span>
             </div>
             <nav>
