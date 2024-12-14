@@ -17,14 +17,14 @@
         .chat-button {
             background-image: linear-gradient(to right, #6a11cb 20%, #2575fc 80%);
             color: white;
-            padding: 8px 16px;
-            border-radius: 25px;
+            padding: 12px 20px;
+            border-radius: 50px;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            position: relative;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .chat-button-content {
@@ -33,32 +33,37 @@
             gap: 8px;
         }
 
+        .chat-button:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
         .notification {
             background-color: #E53935;
-            color: white;
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
+            font-size: 14px;
             position: absolute;
-            top: -8px;
-            right: -8px;
+            top: -10px;
+            right: -10px;
         }
 
         .chat-container {
             display: none;
             position: fixed;
-            bottom: 20px;
+            bottom: 80px;
             right: 20px;
-            width: 240px;
-            height: 360px;
-            background: white;
+            width: 300px;
+            height: 500px;
+            background-color: #f9f9f9;
             border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
             flex-direction: column;
+            overflow: hidden;
         }
 
         .chat-container.active {
@@ -66,73 +71,67 @@
         }
 
         .chat-header {
-            background-image: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+            background-image: linear-gradient(to right, #6a11cb 20%, #2575fc 80%);
             color: white;
-            padding: 12px;
+            padding: 15px;
             border-radius: 12px 12px 0 0;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        .close-chat {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            padding: 0;
-        }
-
         .chat-messages {
             flex-grow: 1;
-            padding: 12px;
+            padding: 15px;
             overflow-y: auto;
-            background-color: #f5f5f5;
+            background-color: #f9f9f9;
         }
 
         .message {
-            margin-bottom: 8px;
-            padding: 8px 10px;
-            border-radius: 12px;
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            border-radius: 15px;
             max-width: 80%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 12px;
         }
 
         .message.bot {
-            background: white;
+            background: #ffffff;
             margin-right: auto;
-            border-radius: 0 12px 12px 12px;
-            color: black;
+            border-radius: 0 15px 15px 15px;
+            font-size: 14px;
+            color: #333;
         }
 
         .message.user {
-            background-image: linear-gradient(to right, #6a11cb 20%, #2575fc 80%);
+            background-color: #6a11cb;
             color: white;
             margin-left: auto;
-            border-radius: 12px 0 12px 12px;
+            border-radius: 15px 0 15px 15px;
         }
 
         .chat-options {
-            padding: 12px;
+            padding: 15px;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
         }
 
         .option-button {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #ddd;
             border-radius: 8px;
             background: white;
             cursor: pointer;
             text-align: left;
-            font-size: 12px;
+            font-size: 14px;
             transition: all 0.3s ease;
         }
 
         .option-button:hover {
-            background-image: linear-gradient(to right, rgba(106, 17, 203, 0.1), rgba(37, 117, 252, 0.1));
+            background-color: #f0f0f0;
             border-color: #6a11cb;
         }
     </style>
@@ -151,7 +150,6 @@
         <div class="chat-container" id="chatContainer">
             <div class="chat-header">
                 <h3>Software Engineering Services</h3>
-                <button class="close-chat" id="closeChat">×</button>
             </div>
             <div class="chat-messages" id="chatMessages">
                 <div class="timestamp">Johnson </div>
@@ -174,16 +172,10 @@
         document.addEventListener('DOMContentLoaded', function() {
             const chatButton = document.getElementById('chatButton');
             const chatContainer = document.getElementById('chatContainer');
-            const closeChat = document.getElementById('closeChat');
 
             // Toggle chat container visibility
             chatButton.addEventListener('click', function() {
                 chatContainer.classList.toggle('active');
-            });
-
-            // Close chat container
-            closeChat.addEventListener('click', function() {
-                chatContainer.classList.remove('active');
             });
         });
 
