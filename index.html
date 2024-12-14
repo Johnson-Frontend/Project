@@ -1145,63 +1145,18 @@
         <span>Back To Top</span>
     </div>
 
-    <!-- Chat widget -->
-    <div class="chat-widget" id="chatWidget">
-        <div class="chat-button" id="chatButton">
-            <div class="chat-button-content">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
-                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
-                </svg>
-                <span>Chat</span>
-            </div>
-            <div class="notification">1</div>
-        </div>
-        <div class="chat-container" id="chatContainer">
-            <div class="chat-header">
-                <h3>Software Engineering Services</h3>
-                <button class="close-chat" id="closeChat">×</button>
-            </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="timestamp">Johnson </div>
-                <br>
-                <div class="message bot">
-                    Hello! Please contact me at 
-                    <a href="mailto:johnsonmarketer@outlook.com">johnsonmarketer@outlook.com</a>
-                    <br>
-                    
-                </div>
-            </div>
-            <div class="chat-options">
-                <button class="option-button" onclick="navigateTo('https://www.johnsonmarketer.com')">Back to Home</button>
-                <button class="option-button" onclick="navigateTo('https://projects.johnsonmarketer.com')">Back to Project Checklist</button>
-                <button class="option-button" onclick="navigateTo('https://shortcuts.johnsonmarketer.com')">Back to Shortcuts</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Include footer -->
     <div id="footer-placeholder"></div>
 
+    <div id="chat-widget-placeholder"></div> <!-- Placeholder for chat widget -->
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const chatButton = document.getElementById('chatButton');
-            const chatContainer = document.getElementById('chatContainer');
-            const closeChat = document.getElementById('closeChat');
             const searchInput = document.getElementById('searchInput');
             let searchPerformed = false; // Track if a search has been performed
 
             // Set focus to the search input on page load
             searchInput.focus();
-
-            // Toggle chat container visibility
-            chatButton.addEventListener('click', function() {
-                chatContainer.classList.toggle('active');
-            });
-
-            // Close chat container
-            closeChat.addEventListener('click', function() {
-                chatContainer.classList.remove('active');
-            });
 
             // Trigger search on Enter key press
             searchInput.addEventListener('keydown', function(event) {
@@ -1217,6 +1172,33 @@
                     }
                 }
             });
+
+            // Load chat.html into the chat-widget-placeholder div
+            fetch('chat.html')
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(data, 'text/html');
+                    const chatWidget = doc.querySelector('.chat-widget');
+                    if (chatWidget) {
+                        document.getElementById('chat-widget-placeholder').appendChild(chatWidget);
+
+                        // Set up event listeners for the chat widget
+                        const chatButton = document.getElementById('chatButton');
+                        const chatContainer = document.getElementById('chatContainer');
+                        const closeChat = document.getElementById('closeChat');
+
+                        // Toggle chat container visibility
+                        chatButton.addEventListener('click', function() {
+                            chatContainer.classList.toggle('active');
+                        });
+
+                        // Close chat container
+                        closeChat.addEventListener('click', function() {
+                            chatContainer.classList.remove('active');
+                        });
+                    }
+                });
         });
 
         function navigateTo(url) {
