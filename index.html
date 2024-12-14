@@ -1021,57 +1021,53 @@
     <!-- Include footer -->
     <div id="footer-placeholder"></div>
 
-    <div id="chat-widget-placeholder"></div>
+               <!-- Chat widget -->
+    <div id="chatContainer"></div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('searchInput');
-            let searchPerformed = false; // Track if a search has been performed
-
-            // Set focus to the search input on page load
-            searchInput.focus();
-
-            // Trigger search on Enter key press
-            searchInput.addEventListener('keydown', function(event) {
-                if (event.key === 'Enter') {
-                    event.preventDefault(); // Prevent form submission if inside a form
-                    if (!searchPerformed) {
-                        searchProjects();
-                        searchPerformed = true; // Mark that a search has been performed
-                    } else {
-                        openHighlightedLinks(); // Open highlighted links
-                        searchPerformed = false; // Reset for the next search
-                        searchInput.value = ''; // Clear the input
-                    }
-                }
-            });
-
-            // Load chat.html into the chat-widget-placeholder div
-            fetch('chat.html')
-                .then(response => response.text())
-                .then(data => {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(data, 'text/html');
-                    const chatWidget = doc.querySelector('.chat-widget');
-                    if (chatWidget) {
-                        document.getElementById('chat-widget-placeholder').appendChild(chatWidget);
-
-                        // Set up event listeners for the chat widget
-                        const chatButton = document.getElementById('chatButton');
-                        const chatContainer = document.getElementById('chatContainer');
-
-                        // Toggle chat container visibility
-                        chatButton.addEventListener('click', function() {
-                            chatContainer.classList.toggle('active');
-                        });
-                    }
-                });
-        });
-
-        function navigateTo(url) {
-            window.location.href = url;
-        }
-
+               <script src="script.js"></script>
+               <script>
+                   document.addEventListener('DOMContentLoaded', function() {
+                       // Focus on the input field when the page loads
+                       const todoInput = document.getElementById('todo-input');
+                       if (todoInput) {
+                           todoInput.focus();
+                       }
+           
+                       // Load chat widget HTML
+                       fetch('chat.html')
+                           .then(response => response.text())
+                           .then(data => {
+                               document.getElementById('chatContainer').innerHTML = data;
+                               // Initialize chat widget functionality
+                               const chatButton = document.getElementById('chatButton');
+                               const chatContainer = document.querySelector('.chat-container');
+                               const closeChat = document.getElementById('closeChat');
+           
+                               if (chatButton) {
+                                   chatButton.addEventListener('click', function() {
+                                       chatContainer.classList.toggle('active');
+                                       console.log('Chat button clicked, chatContainer active:', chatContainer.classList.contains('active'));
+                                   });
+                               } else {
+                                   console.error('Chat button not found!');
+                               }
+           
+                               if (closeChat) {
+                                   closeChat.addEventListener('click', function() {
+                                       chatContainer.classList.remove('active');
+                                       console.log('Close chat button clicked');
+                                   });
+                               } else {
+                                   console.error('Close chat button not found!');
+                               }
+                           })
+                           .catch(error => console.error('Error loading chat widget:', error));
+                   });
+           
+                   function navigateTo(url) {
+                       window.location.href = url;
+                   }
+          
         function searchProjects() {
             const input = document.getElementById('searchInput').value.toLowerCase();
             const projectCategories = document.querySelectorAll('.project-category');
