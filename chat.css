@@ -126,7 +126,7 @@
 }
 
 .option-button:hover {
-    background-color: #e0e0e0;
+    background-image: linear-gradient(to right, rgba(106, 17, 203, 0.9) 20%, rgba(37, 117, 252, 0.9) 80%);
     color:white;
 }
 
