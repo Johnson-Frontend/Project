@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="chat.css">
+    <link rel="stylesheet" href="header.css">
     <style>
         body, html {
             overflow-x: hidden; /* Prevent horizontal overflow */
@@ -34,59 +35,6 @@
             border-bottom-right-radius: 20px;
             box-shadow: none;
             height: auto; /* Ensure header height is auto */
-        }
-        .nav-logo a {
-            display: inline-block; /* Ensure the anchor tag does not affect the layout */
-        }
-        .nav-logo img {
-            max-width: 45px;
-            margin-right: 10px;
-            transition: transform 0.5s ease;
-            vertical-align: middle; /* Align image vertically */
-        }
-        nav {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            margin-left: 145px;
-        }
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            margin-right: 20px;
-            margin-left: -50px;
-        }
-        .nav-logo:hover {
-            transform: scale(1.05);
-        }
-        .nav-logo img {
-            max-width: 45px;
-            margin-right: 10px;
-            transition: transform 0.5s ease;
-        }
-        .nav-logo:hover img {
-            transform: scale(1.05);
-        }
-        .nav-logo span {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #fff;
-        }
-        nav a {
-            color: #fff;
-            margin: 0 0.5rem;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            padding: 0.5rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-        nav a:hover {
-            color: #ffcc00;
-            transform: translateY(-2px);
         }
         .container {
             max-width: 900px;
@@ -887,26 +835,7 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="nav-logo">
-                <a href="https://www.johnsonmarketer.com">
-                    <img id="logo" src="image/logo.svg" alt="Brand Logo">
-                </a>
-                <a href="https://www.johnsonmarketer.com" style="text-decoration: none; color: inherit;">
-                    <span>ByteBoost</span>
-                </a>
-            </div>
-            <nav>
-                <a href="index.html">Home</a>
-                <a href="service.html">Services</a>
-                <a href="blogging/machine-learning.html">ML</a>
-                <a href="about.html">About</a>
-                <a href="https://johnsonmarketer.com/contact.html">Contact</a>
-                <a href="https://projects.johnsonmarketer.com" class="project-list-link pulse">Project List</a>
-            </nav>
-        </nav>
-    </header>
+    <div id="header-placeholder"></div>
     <div class="hero-image-placeholder"></div>
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="">
@@ -1146,6 +1075,13 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById('footer-placeholder').innerHTML = data;
+            });
+
+        // Load header.html into the header-placeholder div
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
             });
     </script>
 </body>
